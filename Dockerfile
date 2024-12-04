@@ -14,6 +14,6 @@ RUN curl --location https://github.com/grafana/loki/releases/download/v3.3.0/log
   && unzip logcli-linux-arm64.zip \
   && mv logcli-linux-arm64 /usr/local/bin/logcli
 
-ADD query.sh
+COPY --chmod=0644 query.sh /query.sh
 
 CMD [ "/bin/sh"]
