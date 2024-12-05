@@ -5,7 +5,7 @@ RUN apt-get update \
   && apt-get install -y curl unzip \
   && rm -rf /var/lib/apt/lists/*
 
-RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; else ARCHITECTURE=amd64; fi \
+RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; else ARCHITECTURE=x86_64; fi \
   && curl https://awscli.amazonaws.com/awscli-exe-linux-$ARCHITECTURE.zip -o awscliv2.zip \
   && unzip awscliv2.zip \
   && ./aws/install \
