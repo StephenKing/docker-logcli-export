@@ -16,6 +16,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCH
   && curl --location https://github.com/grafana/loki/releases/download/v3.3.0/logcli-linux-$ARCHITECTURE.zip -o logcli-linux-$ARCHITECTURE.zip \
   && unzip -q logcli-linux-$ARCHITECTURE.zip \
   && mv logcli-linux-$ARCHITECTURE /usr/local/bin/logcli \
+  && rm logcli-linux-$ARCHITECTURE.zip \
   && logcli --version
 
 COPY --chmod=0744 query.sh /query.sh
