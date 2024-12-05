@@ -19,6 +19,6 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCH
   && rm logcli-linux-$ARCHITECTURE.zip \
   && logcli --version
 
-COPY --chmod=0744 query.sh /query.sh
+COPY --chmod=0755 query.sh /query.sh
 
 ENTRYPOINT ["/query.sh"]
