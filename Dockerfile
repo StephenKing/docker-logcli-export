@@ -20,6 +20,4 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCH
 
 COPY --chmod=0744 query.sh /query.sh
 
-RUN /query.sh
-
-CMD [ "/bin/sh"]
+CMD [ "/bin/bash", "-c", "/query.sh"]
