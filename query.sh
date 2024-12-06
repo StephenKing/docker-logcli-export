@@ -9,17 +9,18 @@ set -eou pipefail
 
 # Check if two arguments are provided
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 s3_uri start_date end_date"
+    echo "Usage: $0 s3_uri filter start_date end_date"
     echo "Dates should be in the format YYYY-MM-DD"
     echo
-    echo "Example: $(basename \"$0\") s3://bucket/path 2024-01-01 2024-01-31"
+    echo "Example: $(basename \"$0\") s3://bucket/path '{app=\"foo\"}' 2024-01-01 2024-01-31"
     exit 1
 fi
 
 # Assign the s3_uri start and end dates to variables
 s3_uri=$1
-start_date=$2
-end_date=$3
+filter=$2
+start_date=$3
+end_date=$4
 
 # Convert the dates to Unix timestamps
 start_timestamp=$(date -d "$start_date" +%s)
