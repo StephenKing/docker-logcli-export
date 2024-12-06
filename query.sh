@@ -49,5 +49,5 @@ while [ $current_timestamp -le $end_timestamp ]; do
     # Increment the timestamp by one day (86400 seconds)
     current_timestamp=$((current_timestamp+86400))
 
-    aws s3 mv data/ $s3_uri --recursive
+    aws s3 mv data/ $s3_uri --recursive --only-show-errors
 done
