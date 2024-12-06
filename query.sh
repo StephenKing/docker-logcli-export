@@ -12,7 +12,7 @@ if [ "$#" -ne 3 ]; then
     echo "Usage: $0 s3_uri start_date end_date"
     echo "Dates should be in the format YYYY-MM-DD"
     echo
-    echo "Example: $(basename '$0') s3://bucket/path 2024-01-01 2024-01-31"
+    echo "Example: $(basename \"$0\") s3://bucket/path 2024-01-01 2024-01-31"
     exit 1
 fi
 
