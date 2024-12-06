@@ -8,7 +8,7 @@ set -eou pipefail
 # export FILTER='{app="foo"}'
 
 # Check if two arguments are provided
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 4 ]; then
     echo "Usage: $0 filter s3_uri start_date end_date"
     echo "Dates should be in the format YYYY-MM-DD"
     echo
