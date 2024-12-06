@@ -5,7 +5,6 @@ set -eou pipefail
 # export LOKI_ADDR=https://logs-prod-eu-west-0.grafana.net
 # export LOKI_USERNAME=12345
 # export LOKI_USERNAME=
-# export FILTER='{app="foo"}'
 
 # Check if two arguments are provided
 if [ "$#" -ne 4 ]; then
@@ -45,7 +44,7 @@ while [ $current_timestamp -le $end_timestamp ]; do
       --part-path-prefix="data/part" \
       --from="${current_date}T00:00:00Z" \
       --to="${next_date}T00:00:00Z" \
-      '${FILTER}' --output=raw
+      ${filter} --output=raw
 
     # Increment the timestamp by one day (86400 seconds)
     current_timestamp=$((current_timestamp+86400))
