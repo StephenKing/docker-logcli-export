@@ -25,6 +25,8 @@ end_date=$3
 start_timestamp=$(date -d "$start_date" +%s)
 end_timestamp=$(date -d "$end_date" +%s)
 
+mkdir -p data/
+
 # Iterate over the date range
 current_timestamp=$start_timestamp
 while [ $current_timestamp -le $end_timestamp ]; do
