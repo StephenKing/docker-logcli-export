@@ -22,6 +22,8 @@ s3_uri=$2
 start_date=$3
 end_date=$4
 
+echo "Filter: $filter"
+
 # Convert the dates to Unix timestamps
 start_timestamp=$(date -d "$start_date" +%s)
 end_timestamp=$(date -d "$end_date" +%s)
