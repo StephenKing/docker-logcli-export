@@ -6,9 +6,11 @@ set -eou pipefail
 # export LOKI_USERNAME=12345
 # export LOKI_USERNAME=
 
-# Check if two arguments are provided
-if [ "$#" -ne 4 ]; then
+# Check if two or four arguments are provided
+if [ "$#" -ne 2 ] && [ "$#" -ne 4 ]; then
     echo "Usage: $0 filter s3_uri start_date end_date"
+    echo "       $0 filter <-- will then filter for yesterday's data"
+    echo
     echo "Dates should be in the format YYYY-MM-DD"
     echo
     echo "Example: $(basename \"$0\") '{app=\"foo\"}' s3://bucket/path 2024-01-01 2024-01-31"
@@ -18,8 +20,17 @@ fi
 # Assign the s3_uri start and end dates to variables
 filter=$1
 s3_uri=$2
-start_date=$3
-end_date=$4
+
+
+# if we have no dates specified, use yesterday
+if [ "$#" -eq 2 ]; then
+  YESTERDAY=$(date -d '-1 day' '+%Y-%m-%d')
+  start_date=$YESTERDAY
+  end_date=$YESTERDAY
+else
+  start_date=$3
+  end_date=$4
+fi
 
 echo "Filter: $filter"
 
