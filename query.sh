@@ -50,6 +50,7 @@ while [ $current_timestamp -le $end_timestamp ]; do
     echo "Starting $current_date"
 
     logcli query --quiet --forward --limit=1000000000000 \
+      --compress \
       --parallel-duration=1h \
       --parallel-max-workers=24 \
       --part-path-prefix="data/part" \
