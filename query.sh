@@ -61,5 +61,9 @@ while [ $current_timestamp -le $end_timestamp ]; do
     # Increment the timestamp by one day (86400 seconds)
     current_timestamp=$((current_timestamp+86400))
 
+    echo "Compressing results"
+    gzip data/*
+
+    echo "Uploading to S3"
     aws s3 mv data/ $s3_uri --recursive --only-show-errors
 done
